@@ -15,22 +15,21 @@ export default class Jatekter {
 
 
 
-    #esemenykezelo() {
-        this.szuloElem.addEventListener("kivalaszt", (event) => {
-            const lampaElem = event.target.closest('.lampa');
-            if (!lampaElem) return;
+
+        #esemenykezelo() {
+            window.addEventListener("kivalaszt", (event) => {
+                const index = event.detail;
+                this.#lista[index] = this.#lista[index] === "green" ? "orange" : "green";
+                this.szuloElem.innerHTML = "";
+                this.#megjelenit();
+            });
+        }
 
 
-            this.szuloElem.innerHTML = "";
-            this.#megjelenit();
 
+    
 
-        });
-    }
-
-    #megjelenit() {
-      
-
+    #megjelenit(){
         for (let index = 0; index < this.#lista.length; index++) {
             new Lampa(this.szuloElem,this.#lista[index], index,document.getElementById("jatekter"));
 

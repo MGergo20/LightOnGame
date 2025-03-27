@@ -2,7 +2,9 @@ export default class Lampa{
     #index=0;
     #adat=" ";
     #szuloElem;
-    constructor(szuloElem,adat,index){
+    #szin;
+    constructor(szuloElem,adat,index,szin){
+        this.#szin=szin;
         this.#szuloElem=szuloElem;
         this.#adat=adat;
         this.#index=index;
@@ -16,10 +18,20 @@ export default class Lampa{
 });
     }
     megjelenit(){
-        let html = `<div class= "elem" style="background-color:${this.#adat }">
+        const elem = document.createElement('div');
+        elem.className = 'lampa';
+        elem.style.backgroundColor = this.#szin;
+        elem.dataset.index = this.#index;
+        elem.addEventListener('click', () => {
+            const esemeny = new CustomEvent("kivalaszt", {detail: this.#index});
+            window.dispatchEvent(esemeny);
+        });
+        this.#szuloElem.appendChild(elem);
+    }
+        //let html = `<div class= "elem" style="background-color:${this.#adat }">
               
-                    </div>`
-    this.#szuloElem.insertAdjacentHTML("beforeend",html);
+                   // </div>`
+    //this.#szuloElem.insertAdjacentHTML("beforeend",html);
 }
 
-    }
+    
