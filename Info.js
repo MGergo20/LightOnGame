@@ -1,10 +1,13 @@
 export default class Info {
-    #szamlalo;
+    #szamlalo=0;
     #szuloElem;
     
     constructor(szamlalo, szuloElem){
         this.#szuloElem = szuloElem;
-        this.#szamlalo = 0;
+        this.#szamlalo = szamlalo;
     }
     
+    megjelenit(){
+
+    }
 }

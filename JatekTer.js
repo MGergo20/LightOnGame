@@ -1,35 +1,39 @@
-import Elem from "./Elem.js";
+
 import Info from "./Info.js";
+import Lampa from "./Lampa.js";
 
-export default class Jatekter{
-    #lista = [" "," "," "," "," "," "," "," "," "];
-    #lampaszamlalo=0;
-    szuloElem;
-    constructor(szuloELem,jatekterelem){
-    this.szuloElem = szuloElem;
-    this.jatekterelem = jatekterelem;
-    this.megjelenit();
-    this.esemenykezelo();
-    }
-}
+export default class Jatekter {
+    #lista = ["green", "orange", "green", "orange", "green", "orange", "green", "orange", "green"];
+    #lampaszamlalo = 0;
 
-
-#esemenykezelo(){
-    window.addEventListener("kivalaszt", (event) => {
-        const lampaElem = event.target.closest('.lampa');
-       if (lampaElem) {
-        
-       }
-        this.szuloElem.innerHTML = "";
+    constructor(szuloELem) {
+        this.szuloElem = szuloELem;
+   
         this.#megjelenit();
-        this.#lampaszamlalo++;
-    
-});
-}
+        this.#esemenykezelo();
+    }
 
-#megjelenit(){
-    for (let index = 0; index < #lista.length; index++) {
-        new Elem(this.#lista[index], index, this.szuloElem);
-        
+
+
+    #esemenykezelo() {
+        this.szuloElem.addEventListener("kivalaszt", (event) => {
+            const lampaElem = event.target.closest('.lampa');
+            if (!lampaElem) return;
+
+
+            this.szuloElem.innerHTML = "";
+            this.#megjelenit();
+
+
+        });
+    }
+
+    #megjelenit() {
+      
+
+        for (let index = 0; index < this.#lista.length; index++) {
+            new Lampa(this.szuloElem,this.#lista[index], index,document.getElementById("jatekter"));
+
+        }
     }
 }

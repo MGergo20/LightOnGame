@@ -16,8 +16,8 @@ export default class Lampa{
 });
     }
     megjelenit(){
-        let html = `<div class= "elem">
-                    ${this.#adat}
+        let html = `<div class= "elem" style="background-color:${this.#adat }">
+              
                     </div>`
     this.#szuloElem.insertAdjacentHTML("beforeend",html);
 }
