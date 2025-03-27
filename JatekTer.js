@@ -25,11 +25,14 @@ export default class Jatekter{
         this.#lampaszamlalo++;
     
 });
+
+}
+#megjelenit(){
+    for (let index = 0; index < lista.length; index++) {
+        new Elem(this.#lista[index], index, this.szuloElem);
+    
+    }       
 }
 
-#megjelenit(){
-    for (let index = 0; index < #lista.length; index++) {
-        new Elem(this.#lista[index], index, this.szuloElem);
-        
-    }
-}
+
+
