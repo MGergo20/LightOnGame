@@ -1,13 +1,13 @@
 export default class Info {
-    #szamlalo=0;
-    #szuloElem;
-    
-    constructor(szamlalo, szuloElem){
-        this.#szuloElem = szuloElem;
-        this.#szamlalo = szamlalo;
-    }
-    
-    megjelenit(){
+  #szamlalo;
+  #szuloElem;
 
-    }
+  constructor(szamlalo, szuloElem) {
+    this.#szuloElem = szuloElem;
+    this.#szamlalo = szamlalo;
+    this.megjelenit();
+  }
+  megjelenit() {
+    this.#szuloElem.innerHTML += `<p>Ennyi a zöld kör: \n ${this.#szamlalo}</p>`;
+  }
 }
