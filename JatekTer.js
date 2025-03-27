@@ -9,6 +9,13 @@ export default class Jatekter {
     constructor(szuloELem) {
         this.szuloElem = szuloELem;
    
+        
+        this.infoPanel=document.querySelector(".info")
+        this.btn=document.querySelector(".gomb")
+        this.info = new Info(this.infoPanel)
+        
+        
+        
         this.#megjelenit();
         this.#esemenykezelo();
     }
@@ -17,11 +24,19 @@ export default class Jatekter {
 
 
         #esemenykezelo() {
-            window.addEventListener("kivalaszt", (event) => {
-                const index = event.detail;
-                this.#lista[index] = this.#lista[index] === "green" ? "orange" : "green";
-                this.szuloElem.innerHTML = "";
-                this.#megjelenit();
+            window.addEventListener("kivalaszt",(event) =>{
+                console.log(event.detail);
+                if (this.#lampaszamlalo % 2 === 0) {
+                    this.#lista[event.detail]="orange";
+                    this.info.megjelenit("green")
+                } else {
+                    this.#lista[event.detail]="green";
+                    this.info.megjelenit("orange")
+                }
+                this.#lampaszamlalo++;
+                this.szuloElem.innerHTML="green";
+                this.szuloElem.innerHTML="orange";
+                this.#megjelenit()
             });
         }
 
@@ -31,7 +46,7 @@ export default class Jatekter {
 
     #megjelenit(){
         for (let index = 0; index < this.#lista.length; index++) {
-            new Lampa(this.szuloElem,this.#lista[index], index,document.getElementById("jatekter"));
+            new Lampa(this.szuloElem,this.#lista[index], index)
 
         }
     }

@@ -1,37 +1,30 @@
 export default class Lampa{
-    #index=0;
-    #adat=" ";
-    #szuloElem;
-    #szin;
-    constructor(szuloElem,adat,index,szin){
-        this.#szin=szin;
-        this.#szuloElem=szuloElem;
+    #szuloELem;
+    #adat;
+    #index;
+
+    constructor(szuloElem,adat,index){
+        this.#szuloELem=szuloElem;
         this.#adat=adat;
         this.#index=index;
         this.megjelenit();
-        this.elem = document.querySelector(".elem:last-child");
-        this.elem.addEventListener("click", ()=> {
-            if (this.#adat === " "){
+        this.lampa = document.querySelector(".lampa:last-child");
+        this.lampa.addEventListener("click", ()=> {
+
             const esemeny = new CustomEvent("kivalaszt",{detail:this.#index});
             window.dispatchEvent(esemeny);
-    }
-});
-    }
-    megjelenit(){
-        const elem = document.createElement('div');
-        elem.className = 'lampa';
-        elem.style.backgroundColor = this.#szin;
-        elem.dataset.index = this.#index;
-        elem.addEventListener('click', () => {
-            const esemeny = new CustomEvent("kivalaszt", {detail: this.#index});
-            window.dispatchEvent(esemeny);
         });
-        this.#szuloElem.appendChild(elem);
     }
-        //let html = `<div class= "elem" style="background-color:${this.#adat }">
-              
-                   // </div>`
-    //this.#szuloElem.insertAdjacentHTML("beforeend",html);
-}
 
     
+    
+   
+
+
+megjelenit() {
+    let html=`<div class= "lampa" style="background-color:${this.#adat===1? "green" : "orange" }">
+                    </div>`;
+    this.#szuloELem.insertAdjacentHTML("beforeend",html);
+
+    }
+}
