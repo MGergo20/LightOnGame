@@ -8,11 +8,12 @@ export default class Jatekter {
 
     constructor(szuloELem) {
         this.szuloElem = szuloELem;
-   
+        this.ujJatekGomb();
         
         this.infoPanel=document.querySelector(".info")
         this.btn=document.querySelector(".gomb")
         this.info = new Info(this.infoPanel)
+
         
         
         
@@ -49,5 +50,16 @@ export default class Jatekter {
             new Lampa(this.szuloElem,this.#lista[index], index)
 
         }
+        
     }
-}
+    ujJatekGomb(){
+        let gomb = document.querySelector(".gomb")
+        gomb.addEventListener("click", () => this.ujJatek());
+    }
+    ujJatek(){
+            this.szuloElem.innerHTML = ``;
+            this.#megjelenit();
+            
+        
+        }
+    }
